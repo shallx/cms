@@ -106,6 +106,15 @@ Route::get('/user/{id}/posts', function($id){
 
 });
 
+//Many to Many Relationship
+
+Route::get('/user/{id}/role', function($id){  // finding Role
+    $roles = User::find($id)->roles;
+    // $roles = User::find($id)->roles()->get(); //Works same as above one
+    foreach($roles as $role)
+        echo $role->name;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
