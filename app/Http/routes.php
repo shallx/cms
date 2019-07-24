@@ -3,6 +3,7 @@
 use App\Post;
 use App\User;
 use App\Role;
+use App\Country;
 
 Route::get('/', function(){
     return view('welcome');
@@ -124,10 +125,12 @@ Route::get('/role/{id}/user', function($id){  // finding User of specific role(S
         echo $user->name . "<br>";
 });
 
-// Has One Through Relationship
+// Has Many Through Relationship
 
-Route::get('/user/country', function(){
-    
+Route::get('/country/{id}/user', function($id){
+    $posts = Country::find($id)->posts;
+    foreach($posts as $post)
+        echo $post->title . "<br>";
 });
 /*
 |--------------------------------------------------------------------------
