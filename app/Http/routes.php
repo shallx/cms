@@ -124,6 +124,11 @@ Route::get('/role/{id}/user', function($id){  // finding User of specific role(S
         echo $user->name . "<br>";
 });
 
+// Has One Through Relationship
+
+Route::get('/user/country', function(){
+    
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
