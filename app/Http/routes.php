@@ -2,6 +2,7 @@
 
 use App\Post;
 use App\User;
+use App\Role;
 
 Route::get('/', function(){
     return view('welcome');
@@ -108,11 +109,19 @@ Route::get('/user/{id}/posts', function($id){
 
 //Many to Many Relationship
 
-Route::get('/user/{id}/role', function($id){  // finding Role
+Route::get('/user/{id}/role', function($id){  // finding Roles of User
     $roles = User::find($id)->roles;
     // $roles = User::find($id)->roles()->get(); //Works same as above one
     foreach($roles as $role)
         echo $role->name;
+});
+
+// Many to Many Inverse Relationship
+
+Route::get('/role/{id}/user', function($id){  // finding User of specific role(Same technique)
+    $users = Role::find($id)->users;
+    foreach($users as $user)
+        echo $user->name . "<br>";
 });
 
 /*
