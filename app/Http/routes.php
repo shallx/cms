@@ -5,6 +5,7 @@ use App\Post;
 use App\User;
 use App\Role;
 use App\Country;
+use App\Video;
 
 Route::get('/', function(){
     return view('welcome');
@@ -163,7 +164,7 @@ Route::get('/image/{id}/post', function($id){
     //return $posts;
 });
 
-//One to Many Polymorphic Inverse
+//One to Many Polymorphic
 //finding owner of the Image
 
 Route::get('/image/{id}/post', function($id){
@@ -172,7 +173,7 @@ Route::get('/image/{id}/post', function($id){
     //return $posts;
 });
 
-//Many to Many Polymorphic Inverse
+//Many to Many Polymorphic
 //Retriving the tag of the post
 
 Route::get('/post/{id}/tag', function($id){
@@ -180,9 +181,17 @@ Route::get('/post/{id}/tag', function($id){
     foreach($tags as $tag){
         echo $tag->name . "<br>";
     }
-    //return $posts;
 });
 
+//Many to Many Polymorphic
+//Retriving the tag of the Video
+
+Route::get('/video/{id}/tag', function($id){
+    $tags = Video::findOrFail($id)->tags;
+    foreach($tags as $tag){
+        echo $tag->name . "<br>";
+    }
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
