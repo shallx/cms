@@ -132,6 +132,27 @@ Route::get('/country/{id}/user', function($id){
     foreach($posts as $post)
         echo $post->title . "<br>";
 });
+
+//One to One Polymorphic
+
+//Post to Image
+
+Route::get('/post/{id}/image', function($id){
+    $photos = Post::find($id)->photos;
+    foreach($photos as $post)
+        echo $post->path . "<br>";
+    //return $posts;
+});
+
+//Post to Image
+
+Route::get('/user/{id}/image', function($id){
+    $photos = User::find($id)->photos;
+    foreach($photos as $photo)
+        echo $photo->path . "<br>";
+    //return $posts;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
