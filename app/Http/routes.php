@@ -172,6 +172,17 @@ Route::get('/image/{id}/post', function($id){
     //return $posts;
 });
 
+//Many to Many Polymorphic Inverse
+//Retriving the tag of the post
+
+Route::get('/post/{id}/tag', function($id){
+    $tags = Post::findOrFail($id)->tags;
+    foreach($tags as $tag){
+        echo $tag->name . "<br>";
+    }
+    //return $posts;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
