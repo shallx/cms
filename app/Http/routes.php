@@ -163,6 +163,8 @@ Route::get('/image/{id}/post', function($id){
     //return $posts;
 });
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
