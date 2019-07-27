@@ -1,5 +1,6 @@
 <?php
 
+use App\Photo;
 use App\Post;
 use App\User;
 use App\Role;
@@ -150,6 +151,15 @@ Route::get('/user/{id}/image', function($id){
     $photos = User::find($id)->photos;
     foreach($photos as $photo)
         echo $photo->path . "<br>";
+    //return $posts;
+});
+
+//One to One Polymorphic Inverse
+//finding owner of the Image
+
+Route::get('/image/{id}/post', function($id){
+    $post = Photo::findOrFail($id);
+    return $post->imageable;
     //return $posts;
 });
 
