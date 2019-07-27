@@ -154,7 +154,7 @@ Route::get('/user/{id}/image', function($id){
     //return $posts;
 });
 
-//One to One Polymorphic Inverse
+//One to Many Polymorphic Inverse
 //finding owner of the Image
 
 Route::get('/image/{id}/post', function($id){
@@ -163,7 +163,14 @@ Route::get('/image/{id}/post', function($id){
     //return $posts;
 });
 
+//One to Many Polymorphic Inverse
+//finding owner of the Image
 
+Route::get('/image/{id}/post', function($id){
+    $post = Photo::findOrFail($id);
+    return $post->imageable;
+    //return $posts;
+});
 
 /*
 |--------------------------------------------------------------------------
