@@ -192,6 +192,8 @@ Route::get('/video/{id}/tag', function($id){
         echo $tag->name . "<br>";
     }
 });
+
+Route::resource('/posts', 'PostController');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

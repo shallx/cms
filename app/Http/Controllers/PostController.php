@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
 
 class PostController extends Controller
 {
@@ -13,9 +15,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($post)
+    public function index()
     {
-        return "The Returned number is " . $post;
+        //return "The Returned number is " . $post;
       
     }
 
@@ -26,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -37,7 +39,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create($request->all());
+        // $posts = new Post;
+        // // $posts->title = $request->title;
+        // $posts->title = "something to be deleted";
+        // $posts->save();
     }
 
     /**
