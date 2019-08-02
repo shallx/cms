@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,7 +18,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //return "The Returned number is " . $post;
+        //reading Post table's data(gets here automatically after submitting in create route)
+        $posts = Post::all();
+        return view('posts.index', compact('posts'));
       
     }
 
@@ -44,6 +47,7 @@ class PostController extends Controller
         // // $posts->title = $request->title;
         // $posts->title = "something to be deleted";
         // $posts->save();
+        return redirect('/posts');  //redirecting to specific place
     }
 
     /**
