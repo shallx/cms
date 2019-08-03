@@ -11,4 +11,10 @@
         <input type="submit" value="Submit" name="submit">
     
     </form>
+
+    <form method="post" action="/posts/{{$post->id}}" >
+        {{csrf_field()}}
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" name="Submit" value="DELETE">
+    </form>
 @endsection
