@@ -42,12 +42,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        Post::create($request->all());
+        $request->user_id = intval($request->user_id);
+        //return gettype($request->user_id);
+        Post::create(['user_id' => 5,'title' => $request->title]); //$request gets all input values as arrays and create method stores them
         // $posts = new Post;
         // // $posts->title = $request->title;
-        // $posts->title = "something to be deleted";
+        // $posts->user_id = $request->id;
+        // $posts->title = $request->title;
+        // $posts->content = $request->content;
         // $posts->save();
         return redirect('/posts');  //redirecting to specific place
+        //************* */IMP(user_id is not being saved to database for some reason**********
     }
 
     /**
@@ -58,7 +63,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.show', compact('post')); //compact takes variable as parameter without $ sign
     }
 
     /**
@@ -69,7 +75,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -81,7 +88,9 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->update($request->all());
+        return redirect('/posts');
     }
 
     /**
