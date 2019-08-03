@@ -44,7 +44,7 @@ class PostController extends Controller
     {
         $request->user_id = intval($request->user_id);
         //return gettype($request->user_id);
-        Post::create(['user_id' => 5,'title' => $request->title]); //$request gets all input values as arrays and create method stores them
+        Post::create($request->all()); //$request gets all input values as arrays and create method stores them
         // $posts = new Post;
         // // $posts->title = $request->title;
         // $posts->user_id = $request->id;
