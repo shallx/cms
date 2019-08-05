@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
+
+use Illuminate\Http\Request;
+use App\Http\Requests\CreatePostRequest;
 
 
 class PostController extends Controller
@@ -40,8 +41,17 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
+        // //Validation
+        // $this->validate($request, [
+        //     'title' => 'required|min:7|max:20',  //follow the => sign, $this->validate() formet is old
+        //     'content' => 'required|min:10'
+        // ]);
+        // //laravel 5.7
+        // $validData = $request->validate([
+        //     'title' => 'required|min:7'
+        // ]);
         $request->user_id = intval($request->user_id);
         //return gettype($request->user_id);
         Post::create($request->all()); //$request gets all input values as arrays and create method stores them
