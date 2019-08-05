@@ -42,4 +42,14 @@ class User extends Authenticatable
         return $this->morphMany('App\Photo', 'imageable');
     }
 
+    //Accessor function
+    public function getNameAttribute($value){  //'get' for Accessor,  'Name' is the attribute, Attribute is fixed word
+        return strtoupper($value);
+    }
+
+    //Mutator function
+    public function setNameAttribute($value){
+        $this->attributes['name'] = strtoupper($value); //changes name attri
+    }
+
 }

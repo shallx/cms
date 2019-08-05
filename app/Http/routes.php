@@ -11,8 +11,27 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+/*
+|--------------------------------------------------------------------------
+| MiddleWare is used to allow routes acess for certain type of user
+|--------------------------------------------------------------------------
+*/
 Route::group(['middleware' => 'web'], function () {
+    //Creates CRUD routes for /posts
     Route::resource('/posts', 'PostController');
+
+    //Accessor
+    Route::get('/getname', function () {
+        $user = User::find(1)->first();
+        echo $user->name;
+    });
+
+    Route::get('/setname', function () {
+        $user = User::find(5);
+        $user->name = "animesh anjan";
+        $user->save();
+        echo $user->name;
+    });
     
 });
 /*
