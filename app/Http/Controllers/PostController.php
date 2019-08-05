@@ -20,6 +20,7 @@ class PostController extends Controller
     public function index()
     {
         //reading Post table's data(gets here automatically after submitting in create route)
+        //$posts = Post::latestasc();
         $posts = Post::all();
         return view('posts.index', compact('posts'));
       

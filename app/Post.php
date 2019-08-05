@@ -24,5 +24,15 @@ class Post extends Model
     public function tags(){
         return $this->morphToMany('App\Tag', 'taggable');
     }
+
+    //Adding QueryScope
+
+    public function scopeAccend($query){
+        return $query->orderBy('id', 'asc')->get();
+    }
+
+    public function scopeDecend($query){
+        return $query->orderBy('id', 'dsc')->get();
+    }
 }
 

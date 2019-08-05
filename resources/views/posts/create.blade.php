@@ -10,7 +10,7 @@
         <input type="text" name="content" placeholder="Write content here">
         <input type="submit" value="Submit" name="submit">
      </form>-->
-     {!! Form::open(['method' => "POST", 'action' => 'PostController@store']) !!}
+     {!! Form::open(['method' => "POST", 'action' => 'PostController@store', 'files' =>true]) !!}
 
          <div class="form-group">
             {!! Form::label('title', 'User ID:')!!}
