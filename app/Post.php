@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    public $imgDir = "/Images/";
     //use SoftDeletes;
     //protected $dates = ['deleted_at'];
-    protected $fillable = [ 'title', 'content'];
+    protected $fillable = [ 'user_id', 'title', 'content', 'path'];
     
 
     public function user()
@@ -33,6 +34,12 @@ class Post extends Model
 
     public function scopeDecend($query){
         return $query->orderBy('id', 'dsc')->get();
+    }
+
+    //Accessor
+
+    public function getPathAttribute($value){
+        return $this->imgDir . $value;
     }
 }
 

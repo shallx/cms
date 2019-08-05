@@ -44,6 +44,15 @@ class PostController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
+        $input = $request->all();
+        if($file = $request->file('file')){ //file method works as input field type,
+           $input['path'] = $file->getClientOriginalName(); //image file name
+           $file->move('Images', $input['path']); //Images is the directory name, second parameter is the name of the file-
+        }
+        
+
+        Post::create($input); //$request gets all input values as arrays and create method stores them
+
         // //Validation
         // $this->validate($request, [
         //     'title' => 'required|min:7|max:20',  //follow the => sign, $this->validate() formet is old
@@ -53,9 +62,7 @@ class PostController extends Controller
         // $validData = $request->validate([
         //     'title' => 'required|min:7'
         // ]);
-        $request->user_id = intval($request->user_id);
         //return gettype($request->user_id);
-        Post::create($request->all()); //$request gets all input values as arrays and create method stores them
         // $posts = new Post;
         // // $posts->title = $request->title;
         // $posts->user_id = $request->id;

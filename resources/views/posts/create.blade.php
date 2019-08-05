@@ -14,12 +14,17 @@
 
          <div class="form-group">
             {!! Form::label('title', 'User ID:')!!}
-            {!! Form::text('user_id', 1, ['class'=>'form-control'])!!} 
+            {!! Form::number('user_id', 1, ['class'=>'form-control'])!!} 
          </div>
 
          <div class="form-group">
             {!! Form::label('title', 'Title:')!!}
             {!! Form::text('title', null, ['class'=>'form-control'])!!} 
+         </div>
+
+         <div class="form-group">
+            {!! Form::label('title', 'Title:')!!}
+            {!! Form::file('file', ['class'=>'form-control'])!!} 
          </div>
 
          <div class="form-group">
